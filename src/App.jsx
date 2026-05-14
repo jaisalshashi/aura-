@@ -1,5 +1,6 @@
 // src/App.jsx
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { useAuraData } from "./useAuraData.js";
 import { createAudioEngine } from "./audioEngine.js";
 
@@ -566,6 +567,7 @@ export default function App() {
 
   return (
     <>
+      <Analytics />
       <style>{`
         ::-webkit-scrollbar{width:0}
         input::placeholder{color:rgba(255,255,255,0.25)}
