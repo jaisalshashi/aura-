@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyALJWkYJ-PRT-yc6ZzuPEvQR1hj89C8K_w",
@@ -15,15 +15,4 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-export async function ensureAuth() {
-  return new Promise((resolve) => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        resolve(user);
-      } else {
-        const cred = await signInAnonymously(auth);
-        resolve(cred.user);
-      }
-    });
-  });
-}
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged };
