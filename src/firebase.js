@@ -27,9 +27,5 @@ export async function ensureAuth() {
       else { const cred = await signInAnonymously(auth); resolve(cred.user); }
     });
   });
-}
-     if (user) { resolve(user); }
-      else { const cred = await signInAnonymously(auth); resolve(cred.user); }
-    });
   });
 }
